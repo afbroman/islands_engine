@@ -1,5 +1,5 @@
 defmodule IslandsEngine.Guesses do
-  alias __MODULE__
+  alias IslandsEngine.{Coordinate, Guesses}
 
   @enforce_keys [:hits, :misses]
   defstruct [:hits, :misses]
@@ -10,5 +10,5 @@ defmodule IslandsEngine.Guesses do
     update_in(guesses.hits, &MapSet.put(&1, coordinate))
 
   def add(%Guesses{} = guesses, :miss, %Coordinate{} = coordinate), do:
-    update_in(guesses.miss, &MapSet.put(&1, coordinate))
+    update_in(guesses.misses, &MapSet.put(&1, coordinate))
 end
